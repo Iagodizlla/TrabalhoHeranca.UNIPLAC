@@ -3,7 +3,7 @@ public class TecnicoAdministrativo : Funcionario // herança, Professor é uma s
 {
     public string Funcao{ get; set; }
     // construtor com parâmetros opcionais
-    public TecnicoAdministrativo(string funcao = "", string nome = "", string cpf = "", string rg = "", Endereco? logradouro = null, int matriculaf = 0, decimal salario = 0)
+    public TecnicoAdministrativo(string funcao = "", string nome = "", string cpf = "", string rg = "", Endereco? logradouro = null, int matriculaf = 0, double salario = 0)
     {
         // herda os atributos da classe base
         Nome = nome;

@@ -3,7 +3,7 @@ public class Coordenador : Funcionario // herança, Professor é uma subclasse d
 {
     public string SenhaAlarme { get; set; }
     // construtor com parâmetros opcionais
-    public Coordenador(string senhaalarma = "", string nome = "", string cpf = "", string rg = "", Endereco? logradouro = null, int matriculaf = 0, decimal salario = 0)
+    public Coordenador(string senhaalarma = "", string nome = "", string cpf = "", string rg = "", Endereco? logradouro = null, int matriculaf = 0, double salario = 0)
     {
         // herda os atributos da classe base
         Nome = nome;

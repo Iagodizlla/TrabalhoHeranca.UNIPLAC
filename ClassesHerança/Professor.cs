@@ -4,7 +4,7 @@ public class Professor : Funcionario // herança, Professor é uma subclasse de 
     public string Area{ get; set; }
     public string Titulacao{ get; set;}
     // construtor com parâmetros opcionais
-    public Professor(string titulacao = "", string area = "", string nome = "", string cpf = "", string rg = "", Endereco? logradouro = null, int matriculaf = 0, decimal salario = 0)
+    public Professor(string titulacao = "", string area = "", string nome = "", string cpf = "", string rg = "", Endereco? logradouro = null, int matriculaf = 0, double salario = 0)
     {
         // herda os atributos da classe base
         Nome = nome;

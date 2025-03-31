@@ -12,10 +12,13 @@ public class Program
         auxCurso1.Descricao = "Descrição 1";
         auxCurso1.CargaHoraria = 1000;
         Curso auxCurso2 = new Curso("Curso 2", "Descrição 2", 2145);
-        Aluno auxAluno1 = new Aluno("Aluno 1", "123", "456", new Endereco("Rua 1", 12, "Bairro 1", "Cidade 1", "Estado 1", "12345-678"), 123, auxCurso1);
+        Aluno auxAluno1 = new Aluno("Iago Henrique Schlemper", "123", "456", new Endereco("Jose de alencar", 4, "Coral", "lages", "SC", "12345-678"), 123, auxCurso1);
         Aluno auxAluno2 = new Aluno("Aluno 2", "789", "101", new Endereco("Rua 2", 43, "Bairro 2", "Cidade 2", "Estado 2", "12345-678"), 456, auxCurso1);
         Aluno auxAluno3 = new Aluno("Aluno 3", "325", "748", new Endereco("Rua 4", 43, "Bairro 4", "Cidade 4", "Estado 4", "12345-678"), 456, auxCurso2);
         Endereco auxEnd = new Endereco("Rua 3", 45, "Bairro 3", "Cidade 3", "Estado 3", "12345-678");
+        
+        Funcionario auxFun = new Funcionario("Funcionario 1", "123", "111", new Endereco("Rua 1", 40, "Bairro 1", "Cidade 1", "Estado 1", "2314-244"), 287934, 4100);
+        
         Professor auxProfessor1 = new Professor("Doutor", "Computação", "Professor 1", "123", "456", auxEnd, 2134224, 3000);
         Professor auxProfessor2 = new Professor("Mestre", "Matemática", "Professor 2", "789", "101", new Endereco("Rua 4", 245, "Ba 4", "C 4", "UF 4", "12-678"), 3214441, 2900);
         //adicionar alunos e professores em um list, do tipo Pessoa, afinal tanto Aluno quanto Professor são do tipo Pessoa
@@ -24,6 +27,7 @@ public class Program
         pessoas.Add(auxAluno3);
         pessoas.Add(auxProfessor1);
         pessoas.Add(auxProfessor2);
+        pessoas.Add(auxFun);
         //listar todo o conteúdo do list mostrando todos os dados e os dados específicos de cada classe
         //foreach (var item in pessoas)
         //{
@@ -97,10 +101,48 @@ public class Program
     }
     private static void CadastrarFuncionario(List<Pessoa> pessoas)
     {
-        Console.WriteLine("Em desenvolvimente...");
+        Console.Write("CPF: ");
+        string cpf = Console.ReadLine()!;
+
+        Console.Write("Nome do Funcionario: ");
+        string nome = Console.ReadLine()!;
+
+        Console.Write("RG: ");
+        string rg = Console.ReadLine()!;
+
+        Console.Write("Rua: ");
+        string rua = Console.ReadLine()!;
+
+        Console.Write("Número: ");
+        int numero = int.Parse(Console.ReadLine()!);
+
+        Console.Write("Bairro: ");
+        string bairro = Console.ReadLine()!;
+
+        Console.Write("Cidade: ");
+        string cidade = Console.ReadLine()!;
+
+        Console.Write("Estado: ");
+        string estado = Console.ReadLine()!;
+
+        Console.Write("CEP: ");
+        string cep = Console.ReadLine()!;
+
+        Console.WriteLine("Matricula: ");
+        int matriculaf = int.Parse(Console.ReadLine()!);
+
+        Console.WriteLine("Salario: ");
+        double salario = double.Parse(Console.ReadLine()!);
+
+        Endereco endereco = new Endereco(rua, numero, bairro, cidade, estado, cep);
+        Funcionario novoFuncionario = new Funcionario(cpf, nome, rg, endereco, matriculaf, salario);
+        pessoas.Add(novoFuncionario);
+
+        Console.WriteLine("\nFuncionario cadastrado com sucesso!");
     }
     private static void ListarPessoas(List<Pessoa> pessoas)
     {
+        Console.Clear();
         Console.WriteLine("\n--- LISTA DE PESSOAS ---");
         foreach (var item in pessoas)
         {
@@ -112,7 +154,14 @@ public class Program
             else if (item is Professor professor)
             {
                 Console.WriteLine($"{item.GetType().Name} => Nome: {professor.Nome}, CPF: {professor.Cpf}, RG: {professor.Rg}, " +
-                                  $"Endereço: {professor.Logradouro.Rua}, Titulação: {professor.Titulacao}, Área: {professor.Area}\n");
+                                  $"Endereço: {professor.Logradouro.Rua}, Titulação: {professor.Titulacao}, Área: {professor.Area}, " +
+                                  $"Matricula: {professor.MatriculaF}, Salario: {professor.Salario}\n");
+            }
+            else if (item is Funcionario funcionario)
+            {
+                Console.WriteLine($"{item.GetType().Name} => Nome: {funcionario.Nome}, CPF: {funcionario.Cpf}, RG: {funcionario.Rg}, " +
+                                  $"Endereço: {funcionario.Logradouro.Rua}, Matricula: {funcionario.MatriculaF}, " +
+                                  $"Salario: {funcionario.Salario}\n");
             }
             else if(item is Pessoa pessoa)
             {
