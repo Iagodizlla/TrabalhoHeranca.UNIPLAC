@@ -1,7 +1,7 @@
 // chama a classe Curso, Aluno, Professor e Endereco do namespace ClassesHerança
 // somente é possivel pois o projeto AplicaçãoHerança tem uma referência para o projeto ClassesHerança
 using ClassesHerança;
-internal class Program
+public class Program
 {
     Program()
     {
@@ -34,7 +34,10 @@ internal class Program
             {
             Console.WriteLine($"{item.GetType().Name} => Nome: {p.Nome}, CPF: {p.Cpf}, RG: {p.Rg}, Endereço: {p.Logradouro.Rua}, Titulação: {p.Titulacao}, Área: {p.Area}\n");
             }
+            #region Teste
+            #endregion
         }
+        Console.ReadLine();
     }
     public static void Main(string[] args)
     {
