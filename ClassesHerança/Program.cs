@@ -47,19 +47,61 @@ public class Program
         while (faz == true)
         {
             Console.Clear();
-            Console.WriteLine("S. Sair\n1. Cadastrar Aluno\n2. Listar Pessoas");
+            Console.WriteLine("S. Sair\n1. Cadastrar Aluno\n2. Listar Pessoas\n3. Cadastrar Pessoa\n4. Cadastrar Funcioanrio");
             char n = char.Parse(Console.ReadLine()!.ToUpper());
             switch (n) {
                 case 'S': faz = false; break;
-                case '1': CadastrarAluno(pessoas);break;
-                case '2': ListarAluno(pessoas);break;
+                case '1': CadastrarAluno(pessoas); break;
+                case '2': ListarPessoas(pessoas) ;break;
+                case '3': CadastrarPessoa(pessoas); break;
+                case '4': CadastrarFuncionario(pessoas); break;
                 default: Console.WriteLine("Opcao invalida"); break;
             }
+            Console.ReadLine();
         }
     }
-    private static void ListarAluno(List<Pessoa> pessoas)
+    private static void CadastrarPessoa(List<Pessoa> pessoas)
     {
-        Console.WriteLine("\n--- LISTA DE ALUNOS ---");
+        Console.Write("CPF: ");
+        string cpf = Console.ReadLine()!;
+
+        Console.Write("Nome da Pessoa: ");
+        string nome = Console.ReadLine()!;
+
+        Console.Write("RG: ");
+        string rg = Console.ReadLine()!;
+
+        Console.Write("Rua: ");
+        string rua = Console.ReadLine()!;
+
+        Console.Write("Número: ");
+        int numero = int.Parse(Console.ReadLine()!);
+
+        Console.Write("Bairro: ");
+        string bairro = Console.ReadLine()!;
+
+        Console.Write("Cidade: ");
+        string cidade = Console.ReadLine()!;
+
+        Console.Write("Estado: ");
+        string estado = Console.ReadLine()!;
+
+        Console.Write("CEP: ");
+        string cep = Console.ReadLine()!;
+
+        Endereco endereco = new Endereco(rua, numero, bairro, cidade, estado, cep);
+        Pessoa novaPessoa = new Pessoa(cpf, nome, rg, endereco);
+        pessoas.Add(novaPessoa);
+
+        Console.WriteLine("\nPessoa cadastrado com sucesso!");
+    }
+    private static void CadastrarFuncionario(List<Pessoa> pessoas)
+    {
+        Console.WriteLine("Em desenvolvimente...");
+    }
+    private static void ListarPessoas(List<Pessoa> pessoas)
+    {
+        Console.WriteLine("\n--- LISTA DE PESSOAS ---");
         foreach (var item in pessoas)
         {
             if (item is Aluno aluno)
@@ -67,21 +109,25 @@ public class Program
                 Console.WriteLine($"{item.GetType().Name} => Nome: {aluno.Nome}, CPF: {aluno.Cpf}, RG: {aluno.Rg}, " +
                                   $"Endereço: {aluno.Logradouro.Rua}, Matrícula: {aluno.Matricula}, Curso: {aluno.CursoAluno.Nome}\n");
             }
-            //else if (item is Professor professor)
-            //{
-            //    Console.WriteLine($"{item.GetType().Name} => Nome: {professor.Nome}, CPF: {professor.Cpf}, RG: {professor.Rg}, " +
-            //                      $"Endereço: {professor.Logradouro.Rua}, Titulação: {professor.Titulacao}, Área: {professor.Area}\n");
-            //}
+            else if (item is Professor professor)
+            {
+                Console.WriteLine($"{item.GetType().Name} => Nome: {professor.Nome}, CPF: {professor.Cpf}, RG: {professor.Rg}, " +
+                                  $"Endereço: {professor.Logradouro.Rua}, Titulação: {professor.Titulacao}, Área: {professor.Area}\n");
+            }
+            else if(item is Pessoa pessoa)
+            {
+                Console.WriteLine($"{item.GetType().Name} => Nome: {pessoa.Nome}, CPF: {pessoa.Cpf}, RG: {pessoa.Rg}, " +
+                                  $"Endereço: {pessoa.Logradouro.Rua}\n");
+            }
         }
-        Console.ReadLine ();
     }
     private static void CadastrarAluno(List<Pessoa> pessoas)
     {
-        Console.Write("Nome do Aluno: ");
-        string nome = Console.ReadLine()!;
-
         Console.Write("CPF: ");
         string cpf = Console.ReadLine()!;
+
+        Console.Write("Nome do Aluno: ");
+        string nome = Console.ReadLine()!;
 
         Console.Write("RG: ");
         string rg = Console.ReadLine()!;
@@ -116,10 +162,9 @@ public class Program
 
         Curso cursoAluno = (opcaoCurso == 1) ? new Curso("Curso 1", "Descrição 1", 1000) : new Curso("Curso 2", "Descrição 2", 2145);
 
-        Aluno novoAluno = new Aluno(nome, cpf, rg, endereco, matricula, cursoAluno);
+        Aluno novoAluno = new Aluno(cpf, nome, rg, endereco, matricula, cursoAluno);
         pessoas.Add(novoAluno);
 
         Console.WriteLine("\nAluno cadastrado com sucesso!");
-        Console.ReadLine();
     }
 }
