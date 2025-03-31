@@ -134,9 +134,39 @@ public class Program
         Console.WriteLine("Salario: ");
         double salario = double.Parse(Console.ReadLine()!);
 
-        Endereco endereco = new Endereco(rua, numero, bairro, cidade, estado, cep);
-        Funcionario novoFuncionario = new Funcionario(cpf, nome, rg, endereco, matriculaf, salario);
-        pessoas.Add(novoFuncionario);
+        Console.WriteLine("1. Professor\n2. Coordenador\n3. Tecnico ADM");
+        char m = char.Parse(Console.ReadLine()!);
+
+        if (m == '1')
+        {
+            Console.Write("Titulacao: ");
+            string titulacao = Console.ReadLine()!;
+
+            Console.Write("Area: ");
+            string area = Console.ReadLine()!;
+
+            Endereco endereco = new Endereco(rua, numero, bairro, cidade, estado, cep);
+            Professor novoProfessor = new Professor(titulacao, area, cpf, nome, rg, endereco, matriculaf, salario);
+            pessoas.Add(novoProfessor);
+        }
+        else if (m == '2')
+        {
+            Console.Write("Senha do Alarme: ");
+            string senhaalarme = Console.ReadLine()!;
+
+            Endereco endereco = new Endereco(rua, numero, bairro, cidade, estado, cep);
+            Coordenador novoCoordenador = new Coordenador(senhaalarme, cpf, nome, rg, endereco, matriculaf, salario);
+            pessoas.Add(novoCoordenador);
+        }
+        else if(m == '3')
+        {
+            Console.Write("Funcao: ");
+            string funcao = Console.ReadLine()!;
+
+            Endereco endereco = new Endereco(rua, numero, bairro, cidade, estado, cep);
+            TecnicoAdministrativo novoTecnicoADM = new TecnicoAdministrativo(funcao, cpf, nome, rg, endereco, matriculaf, salario);
+            pessoas.Add(novoTecnicoADM);
+        }
 
         Console.WriteLine("\nFuncionario cadastrado com sucesso!");
     }
@@ -157,16 +187,18 @@ public class Program
                                   $"Endereço: {professor.Logradouro.Rua}, Titulação: {professor.Titulacao}, Área: {professor.Area}, " +
                                   $"Matricula: {professor.MatriculaF}, Salario: {professor.Salario}\n");
             }
-            else if (item is Funcionario funcionario)
+            else if(item is Coordenador coordenador)
             {
-                Console.WriteLine($"{item.GetType().Name} => Nome: {funcionario.Nome}, CPF: {funcionario.Cpf}, RG: {funcionario.Rg}, " +
-                                  $"Endereço: {funcionario.Logradouro.Rua}, Matricula: {funcionario.MatriculaF}, " +
-                                  $"Salario: {funcionario.Salario}\n");
+                Console.WriteLine($"{item.GetType().Name} => Nome: {coordenador.Nome}, CPF: {coordenador.Cpf}, RG: {coordenador.Rg}, " +
+                                  $"Endereço: {coordenador.Logradouro.Rua}, Matricula: {coordenador.MatriculaF}, " +
+                                  $"Salario: {coordenador.Salario}, Senha Alarme: {coordenador.SenhaAlarme}\n");
             }
-            else if(item is Pessoa pessoa)
+            else if(item is TecnicoAdministrativo tecnicoAdministrativo)
             {
-                Console.WriteLine($"{item.GetType().Name} => Nome: {pessoa.Nome}, CPF: {pessoa.Cpf}, RG: {pessoa.Rg}, " +
-                                  $"Endereço: {pessoa.Logradouro.Rua}\n");
+                Console.WriteLine($"{item.GetType().Name} => Nome: {tecnicoAdministrativo.Nome}, CPF: {tecnicoAdministrativo.Cpf}, " +
+                                  $"RG: {tecnicoAdministrativo.Rg}, Endereço: {tecnicoAdministrativo.Logradouro.Rua}, " +
+                                  $"Matricula: {tecnicoAdministrativo.MatriculaF}, Salario: {tecnicoAdministrativo.Salario}, " +
+                                  $"Funcao: {tecnicoAdministrativo.Funcao}\n");
             }
         }
     }
