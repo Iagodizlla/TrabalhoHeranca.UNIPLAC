@@ -53,7 +53,7 @@ public class Program
             #region Ir para escolha do menu
             switch (n)
             {
-                case 'S': faz = false; break;
+                case 'S': faz = false; Console.Clear(); break;
                 case '1': ListarPessoas(pessoas); break;
                 case '2': CadastrarPessoa(pessoas); break;
                 default: Console.WriteLine("Opcao invalida"); Console.ReadLine(); break;
@@ -131,7 +131,7 @@ public class Program
             Console.Write("Area: ");
             string area = Console.ReadLine()!;
             #endregion
-            Professor novoProfessor = new Professor(titulacao, area, cpf, nome, rg, endereco, matriculaf, salario);
+            Professor novoProfessor = new Professor(titulacao, area, nome, cpf, rg, endereco, matriculaf, salario);
             pessoas.Add(novoProfessor);
         }
         else if (m == '2')
@@ -140,7 +140,7 @@ public class Program
             Console.Write("Senha do Alarme: ");
             string senhaalarme = Console.ReadLine()!;
             #endregion
-            Coordenador novoCoordenador = new Coordenador(senhaalarme, cpf, nome, rg, endereco, matriculaf, salario);
+            Coordenador novoCoordenador = new Coordenador(senhaalarme, nome, cpf, rg, endereco, matriculaf, salario);
             pessoas.Add(novoCoordenador);
         }
         else if (m == '3')
@@ -149,7 +149,7 @@ public class Program
             Console.Write("Funcao: ");
             string funcao = Console.ReadLine()!;
             #endregion
-            TecnicoAdministrativo novoTecnicoADM = new TecnicoAdministrativo(funcao, cpf, nome, rg, endereco, matriculaf, salario);
+            TecnicoAdministrativo novoTecnicoADM = new TecnicoAdministrativo(funcao, nome, cpf, rg, endereco, matriculaf, salario);
             pessoas.Add(novoTecnicoADM);
         }
         #endregion
@@ -211,7 +211,7 @@ public class Program
         #endregion
         #region Atribuir valores a lista
         Curso cursoAluno = (opcaoCurso == 1) ? new Curso("SI", "Descrição 1", 1000) : new Curso("DI", "Descrição 2", 2145);
-        Aluno novoAluno = new Aluno(cpf, nome, rg, endereco, matricula, cursoAluno);
+        Aluno novoAluno = new Aluno(nome, cpf, rg, endereco, matricula, cursoAluno);
         pessoas.Add(novoAluno);
         #endregion
         Console.WriteLine("\nAluno cadastrado com sucesso!");
