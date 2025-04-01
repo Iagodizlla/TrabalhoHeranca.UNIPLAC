@@ -55,7 +55,7 @@ public class Program
                 case 'S': faz = false; break;
                 case '1': ListarPessoas(pessoas); break;
                 case '2': CadastrarPessoa(pessoas); break;
-                default: Console.WriteLine("Opcao invalida"); break;
+                default: Console.WriteLine("Opcao invalida"); Console.ReadLine(); break;
             }
             #endregion
         }
