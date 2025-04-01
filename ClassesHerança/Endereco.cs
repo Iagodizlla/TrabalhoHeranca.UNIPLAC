@@ -1,4 +1,4 @@
-namespace ClassesHerança;
+namespace ClassesHeranca;
 public class Endereco
 {
     public string Rua { get; set; }

@@ -1,4 +1,4 @@
-namespace ClassesHerança;
+namespace ClassesHeranca;
 public class Professor : Funcionario // herança, Professor é uma subclasse de Pessoa que é uma subclasse de Object
 {
     public string Area{ get; set; }

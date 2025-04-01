@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\ClassesHerança\ClassesHeranca.csproj" />
     <ProjectReference Include="..\ClassesHerança\ClassesHerança.csproj" />
   </ItemGroup>
 

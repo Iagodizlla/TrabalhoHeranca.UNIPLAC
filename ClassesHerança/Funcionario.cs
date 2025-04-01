@@ -1,4 +1,4 @@
-namespace ClassesHerança;
+namespace ClassesHeranca;
 public class Funcionario : Pessoa // herança, Funcionario é uma subclasse de Pessoa que é uma subclasse de Object
 {
     public int MatriculaF { get; set; }

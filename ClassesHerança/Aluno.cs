@@ -1,4 +1,4 @@
-namespace ClassesHerança;
+namespace ClassesHeranca;
 public class Aluno : Pessoa // herança, Aluno é uma subclasse de Pessoa que é uma subclasse de Object
 {
     public int Matricula { get; set; }

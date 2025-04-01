@@ -1,4 +1,4 @@
-namespace ClassesHerança;
+namespace ClassesHeranca;
 public class Curso : Object // herança, Object é a classe base de todas as classes
 {
     public string Nome { get; set; }
